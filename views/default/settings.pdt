@@ -1,0 +1,15 @@
+<ul>
+    <li>
+        <?php
+        $this->Form->label($this->_('yandex.receiver_number', true), 'yandex_receiver_number');
+        $this->Form->fieldText('receiver_number', $this->Html->ifSet($meta['receiver_number']), ['id' => 'yandex_receiver_number']);
+        ?>
+    </li>
+    <li>
+        <?php
+        $this->Form->fieldCheckbox('test_mode', 'true', ($this->Html->ifSet($meta['test_mode'], 'false') == 'true'), ['id' => 'test_mode']);
+        $this->Form->label($this->_('yandex.test_mode', true), 'test_mode', ['class' => 'inline']);
+        ?>
+    </li>
+</ul>
+

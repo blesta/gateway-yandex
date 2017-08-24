@@ -1,0 +1,34 @@
+<hr/>
+<?php
+// Disable CSRF for this form
+$this->Form->setCsrfOptions(['set_on_create' => false]);
+$this->Form->create($post_to, array('class' => 'martop10'));
+if ($this->Html->ifSet($fields)) {
+    foreach ($fields as $key => $value) {
+        $this->Form->fieldHidden($key, $value);
+    }
+}
+?>
+<div class="input-group col-md-6 pull-right">
+        <span class="input-group-addon">
+        <?php $this->Form->label($this->_('yandex.paymentType.payment_method', true), 'paymentType', ['class' => 'inline']); ?>
+        </span>
+    <?php
+    $this->Form->fieldSelect('paymentType', [
+            'PC' => $this->_('yandex.paymentType.pc', true),
+            'AC' => $this->_('yandex.paymentType.ac', true)
+        ],
+        'PC',
+        ['id' => 'paymentType', 'class' => 'form-control']
+    );
+    ?>
+    <div class="input-group-btn">
+        <?php
+        $this->Form->fieldSubmit('submit', $this->_('yandex.buildprocess.submit', true), array('class' => 'btn btn-primary pull-right'));
+        ?>
+    </div>
+</div>
+<div class="clearfix"></div>
+<?php
+$this->Form->end();
+?>
